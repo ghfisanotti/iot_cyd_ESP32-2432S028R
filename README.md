@@ -67,8 +67,8 @@ A custom enclosure was designed in FreeCAD and printed on a Creality Ender 3v2. 
 
 2.  **Clone this repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    cd your-repo-name
+    git clone https://github.com/ghfisanotti/iot_cyd_ESP32-2432S028R.git
+    cd iot_cyd_ESP32-2432S028R
     ```
 
 3.  **Edit `esphome/cyd_esp32_display.yaml`:**
