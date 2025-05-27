@@ -13,8 +13,6 @@ This repository contains the necessary files and documentation for an IoT device
     - [ESPHome Firmware Flashing](#esphome-firmware-flashing)
     - [Home Assistant Integration](#home-assistant-integration)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
 ## Project Overview
@@ -55,9 +53,15 @@ A custom enclosure was designed in FreeCAD and printed on a Creality Ender 3v2. 
 
 ### ESPHome Firmware Flashing
 
-1.  **Install ESPHome:** If you haven't already, install ESPHome. You can do this via `pip`:
+1.  **Install ESPHome:** If you haven't already, install ESPHome. You can do this using Docker:
     ```bash
-    pip install esphome
+    docker run \
+      --restart=unless-stopped \
+      --detach \
+      --name esphome \
+      -v /home/XXXXX/esphome:/config \
+      --net=host \
+      esphome/esphome
     ```
     Or, if you run Home Assistant OS, you can install the ESPHome add-on directly from the Add-on Store.
 
@@ -79,12 +83,11 @@ A custom enclosure was designed in FreeCAD and printed on a Creality Ender 3v2. 
 
 4.  **Flash the firmware:**
     * Connect your CYD ESP32-2032S028R board to your computer via USB.
-    * Navigate to the `esphome/` directory within your cloned repository.
-    * Run the ESPHome command to flash the device. Replace `cyd_esp32_display.yaml` with your actual YAML file name if different.
-        ```bash
-        esphome run cyd_esp32_display.yaml
-        ```
-    * Follow the on-screen prompts. ESPHome will compile the firmware and then attempt to flash it.
+    * Point your browser to http://localhost:6052/
+    * Create a new empty device and paste the `esphome/cyd_esp32_display.yaml` file.
+    * Use the EDIT web option to make any additional modifications to the YAML file
+    * SAVE any changes made
+    * INSTALL to the CYD board, first time you'll have to choose "Plug into this computer" option, next installations can be done "Wirelessly" using OTA.
 
 ### Home Assistant Integration
 
@@ -102,23 +105,13 @@ Once the ESP32 board is successfully flashed and connected to your network, Home
 
 Once integrated, your CYD ESP32-2032S028R device will appear in Home Assistant as an ESPHome device. You can then:
 
-* Create **Lovelace Dashboards** to display information on the device's screen.
+* Add information and controls from the device to **HomeAssistant** Dashboards.
 * Set up **Automations** based on inputs from the device (e.g., if you add a button).
 * Send commands to the device from Home Assistant (e.g., to change display content).
+* Change the status of devices and scenes in HomeAssistant.
 
 Refer to the ESPHome documentation for detailed information on how to configure display components and other functionalities:
 * [ESPHome Display Component](https://esphome.io/components/display/index.html)
-
-## Contributing
-
-Contributions are welcome! If you have suggestions for improvements, new features, or bug fixes, please feel free to:
-
-1.  Fork this repository.
-2.  Create a new branch (`git checkout -b feature/your-feature`).
-3.  Make your changes.
-4.  Commit your changes (`git commit -m 'Add some feature'`).
-5.  Push to the branch (`git push origin feature/your-feature`).
-6.  Open a Pull Request.
 
 ## Acknowledgments
 
