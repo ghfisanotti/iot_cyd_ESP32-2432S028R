@@ -43,20 +43,13 @@ The core of this project is the **CYD ESP32-2032S028R** board.
     * The ESPHome configuration files (`.yaml`) for this project are located in the `esphome/` directory.
 * **Home Assistant:** The central home automation platform that integrates with the ESP32 device for control and monitoring.
 * **FreeCAD:** Used for designing the 3D printable enclosure.
-    * The FreeCAD design files (`.FCStd`) are located in the `3d_model/` directory.
 * **PrusaSlicer:** Used for slicing the 3D model into G-code for printing.
 
 ## 3D Printed Enclosure
 
 A custom enclosure was designed in FreeCAD and printed on a Creality Ender 3v2. The design ensures a snug fit for the CYD ESP32-2032S028R board, protecting it while providing a polished look.
 
-* **Design Files:** The FreeCAD design files (`.FCStd`) can be found in the `3d_model/` directory.
-* **Printable Files:** The `.stl` files ready for slicing are also available in the `3d_model/` directory.
 * **Thingiverse Link:** The 3D model is publicly available on Thingiverse: [https://www.thingiverse.com/thing:7047135](https://www.thingiverse.com/thing:7047135)
-
-*(Optional: Add a picture of the 3D printed enclosure here)*
-
-*(Remember to create an `images` folder and place your photo there)*
 
 ## Installation & Setup
 
@@ -126,10 +119,6 @@ Contributions are welcome! If you have suggestions for improvements, new feature
 4.  Commit your changes (`git commit -m 'Add some feature'`).
 5.  Push to the branch (`git push origin feature/your-feature`).
 6.  Open a Pull Request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
