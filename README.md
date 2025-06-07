@@ -17,7 +17,9 @@ This repository contains the necessary files and documentation for an IoT device
 
 ## Project Overview
 
-This project provides a complete solution for deploying a custom IoT device with a display, leveraging the popular CYD ESP32-2032S028R board. It demonstrates a full workflow from firmware development with ESPHome, seamless integration with Home Assistant for automation and control, to the creation of a functional and aesthetically pleasing 3D-printed enclosure.
+This project provides a complete solution for deploying a custom IoT device with a display, leveraging the popular CYD ESP32-2032S028R board. It demonstrates a full workflow from firmware development with ESPHome, seamless integration with Home Assistant for automation and control, to the creation of a functional 3D-printed enclosure.
+
+In this case, for the UI in ESPhome I used the recently added support for the LVGL graphics library, that includes drop down menus, meters, buttons, etc., etc.
 
 ## Features
 
@@ -71,14 +73,9 @@ A custom enclosure was designed in FreeCAD and printed on a Creality Ender 3v2. 
     cd iot_cyd_ESP32-2432S028R
     ```
 
-3.  **Edit `esphome/cyd_esp32_display.yaml`:**
-    * Open the `esphome/cyd_esp32_display.yaml` file.
-    * **Crucially, modify the `wifi:` section** with your Wi-Fi SSID and password:
-        ```yaml
-        wifi:
-          ssid: "YOUR_WIFI_SSID"
-          password: "YOUR_WIFI_PASSWORD"
-        ```
+3.  **Edit `esphome/cyd1.yaml`:**
+    * Open the `esphome/cyd1.yaml` file.
+    * Modify the passwords required for integration with HomeAssistant and OTA
     * (Optional: Adjust other parameters like `device_name` if you wish.)
 
 4.  **Flash the firmware:**

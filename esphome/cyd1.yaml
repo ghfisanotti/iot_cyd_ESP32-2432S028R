@@ -11,7 +11,7 @@ logger:
 
 api:
   encryption:
-    key: "XXXXXXXXXXXXXXXXXXXXXxGcIbaqCAf4JOhfv60nmzg="
+    key: "xxxxxxxxxxxxxxxxxxxxxxGcIbaqCAf4JOhfv60nmzg="
   on_client_connected:
     - if:
         condition:
@@ -27,7 +27,7 @@ api:
 
 ota:
   - platform: esphome
-    password: "XXXXXXXXXXXXXXXXXX858371419b74d8"
+    password: "xxxxxxxxxxxxxxxxxxxx8371419b74d8"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -40,7 +40,7 @@ wifi:
 
   ap:
     ssid: "Cyd1 Fallback Hotspot"
-    password: "XXXXXXXXWOAp"
+    password: "xxxxxxxxxxxx"
 
 captive_portal:
 
@@ -143,12 +143,34 @@ output:
     id: backlight_pwm
     frequency: 5000 Hz
 
+  - platform: ledc
+    pin: GPIO4 # Red
+    id: led_red_output
+    inverted: true # Invert logic because it's active low
+
+  - platform: ledc
+    pin: GPIO16 # Green
+    id: led_green_output
+    inverted: true
+
+  - platform: ledc
+    pin: GPIO17 # Blue
+    id: led_blue_output
+    inverted: true
+
 light:
   - platform: monochromatic
     output: backlight_pwm
     name: Display Backlight
     id: display_backlight
     restore_mode: ALWAYS_ON
+
+  - platform: rgb
+    name: Onboard RGB LED
+    id: onboard_rgb_led
+    red: led_red_output
+    green: led_green_output
+    blue: led_blue_output
 
 sensor:
   - platform: homeassistant
@@ -165,6 +187,13 @@ sensor:
           text:
             format: "%.1f°C"
             args: [ 'x' ]
+
+  - platform: adc
+    pin: GPIO34 # Connected to the LDR
+    id: ldr_sensor
+    name: "Ambient Light Sensor"
+    update_interval: 5s
+    attenuation: 2.5db # Reads 0.078V when illuminated, up to 1.5V when in darkness
 
 image:
   - file: "ghf_2.png"
